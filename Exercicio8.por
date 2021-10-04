@@ -6,10 +6,15 @@ programa
 		inteiro codProd, codPais
 		real precoProd, pesoProdGra, pesoProdKil=0.00, precoTotProd=0.00, valImposto=0.0, valTotal=0.00, DifCompVen=0.00
 
-		escreva("Informe o código do produto (entre 1 e 10): ")
+		faca {
+		escreva("\n", "Informe o código do produto: ")
 		leia(codProd)
+			se(codProd<=0 ou codProd>=11){
+				escreva("Código do produto inválido, informe de 1 a 10!")
+			}
+		} enquanto (codProd<=0 ou codProd>=11)
 
-		escreva("Informe o preço do produto: R$ ")
+		escreva("Informe o preço do produto compra: R$ ")
 		leia(precoProd)
 
 		escreva("Informe o peso do produto em gramas: ")
@@ -19,25 +24,22 @@ programa
 		leia(codPais)
 
 		pesoProdKil = pesoProdGra/1000
-		escreva("\n", "Peso do produto em quilos (Kg): ",pesoProdKil)
 
 		se (codProd >=1 e codProd <=4){
-			precoTotProd = pesoProdGra*15
+			precoTotProd = (pesoProdGra*15)+precoProd
 		} senao {
 				se (codProd >=5 e codProd <=7){
-					precoTotProd = pesoProdGra*25
+					precoTotProd = (pesoProdGra*25)+precoProd
 				} senao { 
 						se (codProd >=8 e codProd <=10) {
-							precoTotProd = pesoProdGra*35
-						}	
+							precoTotProd = (pesoProdGra*35)+precoProd
+						} 
 					   }
 			   }
-		escreva("\n", "Preço Total do produto, baseado em gramas: R$ ",precoTotProd)
-
-
+	
 		escolha(codPais) {
 			caso 1:
-			escreva("\n", "Imposto zerado")
+			valImposto = 0.00
 			pare
 
 			caso 2:
@@ -51,14 +53,18 @@ programa
 			caso contrario:
 			escreva("\n", "Código do país inválido, somente de 1 a 3!")
 		}
-		escreva("\n", "Imposto de: R$ ",valImposto)
 		
 
 		valTotal = precoTotProd+valImposto
-		escreva("\n", "Valor total com imposto: R$ ",valTotal)
 
 		DifCompVen = valTotal-precoTotProd
-		escreva("\n", "Diferença entre o preço compra e o preço venda: R$ ", DifCompVen)
+
+		escreva("\n", "RESULTADOS:")
+		escreva("\n", "A - Peso do Produto em Kg: ",pesoProdKil)
+		escreva("\n", "B - Preço Total do Produto, baseado em Gramas: ",precoTotProd)
+		escreva("\n", "C - Valor do Imposto:  ",valImposto) 
+		escreva("\n", "D - Valor Total com Imposto: ",valTotal)
+		escreva("\n", "E - Diferença entre preço compra e preço venda: ",DifCompVen)
 		
 	}
 }
@@ -67,7 +73,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 795; 
+ * @POSICAO-CURSOR = 769; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = {codProd, 6, 10, 7}-{codPais, 6, 19, 7}-{pesoProdKil, 7, 31, 11}-{precoTotProd, 7, 49, 12}-{valImposto, 7, 68, 10}-{valTotal, 7, 84, 8}-{DifCompVen, 7, 99, 10};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
